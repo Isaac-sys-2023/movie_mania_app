@@ -4,6 +4,7 @@ import BannerSingle from "../BannerSingle/BannerSingle";
 import { useContext, useEffect, useState } from "react";
 import { MasterContext } from "@/context/MasterContext";
 import './Banner.css'
+import { Movie } from "@/type/MovieType";
 
 
 const Banner = () => {
@@ -36,7 +37,7 @@ const Banner = () => {
             <div className="carousel w-full">
                 {movies.map((movie, index) => {
                     return (
-                        <BannerSingle movie={movie} key={movie.id} currentItem={currentItem} itemIndex={index + 1} />
+                        <BannerSingle movie={movie as Movie} key={movie.id} currentItem={currentItem} itemIndex={index + 1} />
                     )
                 })}
             </div>

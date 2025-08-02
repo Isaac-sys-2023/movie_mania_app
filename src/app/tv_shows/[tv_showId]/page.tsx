@@ -8,7 +8,7 @@ import SceneModal from "@/components/SceneModal/SceneModal";
 import SimilarMovieGroup from "@/components/SimilarMovieGroup/SimilarMovieGroup";
 import Trailers from "@/components/Trailers/Trailers";
 import { MasterContext } from "@/context/MasterContext";
-import { Credits } from "@/type/Credits";
+import { Credits, CrewMember } from "@/type/Credits";
 import { ImageDetails } from "@/type/SceneType";
 import { Movie } from "@/type/SingleMovie";
 import { VideoData } from "@/type/YoutubeType";
@@ -29,14 +29,6 @@ const DetailedTvShowPage = () => {
     const segments = pathname?.split('/') || [];
     const numericTvShowId = Number(segments[segments.length - 1])
     const { detailsType } = useContext(MasterContext);
-
-    const imageUrl = movie && movie.poster_path
-        ? `https://image.tmdb.org/t/p/w1280${movie.poster_path}`
-        : noImage;
-    const backdrop_path = movie && movie.backdrop_path
-        ? `https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`
-        : noBanner;
-
 
     useEffect(() => {
         const fetchMovieData = async () => {
@@ -104,7 +96,7 @@ const DetailedTvShowPage = () => {
 
     const genreNames: string = movie?.genres ? movie.genres.map((genre: { name: string }) => genre.name).join(' ,') : "";
 
-    const featuredCrew = credits?.crew.filter((member: any) => [
+    const featuredCrew = credits?.crew.filter((member: CrewMember) => [
         "Director", "Producer", "Screenplay", "Writer"
     ].includes(member.job));
 

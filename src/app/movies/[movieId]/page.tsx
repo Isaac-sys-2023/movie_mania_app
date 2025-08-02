@@ -7,7 +7,7 @@ import SceneGallery from "@/components/SceneGallery/SceneGallery";
 import SceneModal from "@/components/SceneModal/SceneModal";
 import SimilarMovieGroup from "@/components/SimilarMovieGroup/SimilarMovieGroup";
 import Trailers from "@/components/Trailers/Trailers";
-import { Credits } from "@/type/Credits";
+import { Credits, CrewMember } from "@/type/Credits";
 import { ImageDetails } from "@/type/SceneType";
 import { Movie } from "@/type/SingleMovie";
 import { VideoData } from "@/type/YoutubeType";
@@ -26,7 +26,6 @@ const DetailedMoviePage = () => {
     const pathname = usePathname();
     const lastPartOfPath = pathname?.split('/movies/')[1];
     const numericMovieId = Number(lastPartOfPath)
-
 
     useEffect(() => {
         const fetchMovieData = async () => {
@@ -94,7 +93,7 @@ const DetailedMoviePage = () => {
 
     const genreNames: string = movie?.genres ? movie.genres.map((genre: { name: string }) => genre.name).join(' ,') : "";
 
-    const featuredCrew = credits?.crew.filter((member: any) => [
+    const featuredCrew = credits?.crew.filter((member: CrewMember) => [
         "Director", "Producer", "Screenplay", "Writer"
     ].includes(member.job));
 

@@ -27,13 +27,6 @@ const DetailedMoviePage = () => {
     const lastPartOfPath = pathname?.split('/movies/')[1];
     const numericMovieId = Number(lastPartOfPath)
 
-    const imageUrl = movie && movie.poster_path
-      ? `https://image.tmdb.org/t/p/w1280${movie.poster_path}`
-      : noImage;
-    const backdrop_path = movie && movie.backdrop_path
-      ? `https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`
-      : noBanner;
-
 
     useEffect(() => {
         const fetchMovieData = async () => {

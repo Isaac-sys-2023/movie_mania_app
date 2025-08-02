@@ -1,19 +1,16 @@
 "use client";
-import noBanner from "@/assets/no_banner.png";
-import noImage from "@/assets/no_image.jpg";
 import Casting from "@/components/Casting/Casting";
 import MediaDetails from "@/components/MediaDetails/MediaDetails";
 import SceneGallery from "@/components/SceneGallery/SceneGallery";
 import SceneModal from "@/components/SceneModal/SceneModal";
 import SimilarMovieGroup from "@/components/SimilarMovieGroup/SimilarMovieGroup";
 import Trailers from "@/components/Trailers/Trailers";
-import { MasterContext } from "@/context/MasterContext";
 import { Credits, CrewMember } from "@/type/Credits";
 import { ImageDetails } from "@/type/SceneType";
 import { Movie } from "@/type/SingleMovie";
 import { VideoData } from "@/type/YoutubeType";
 import { usePathname } from "next/navigation";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const BASE_URL = 'https://api.themoviedb.org/3';
 const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
@@ -28,7 +25,6 @@ const DetailedTvShowPage = () => {
     const pathname = usePathname();
     const segments = pathname?.split('/') || [];
     const numericTvShowId = Number(segments[segments.length - 1])
-    const { detailsType } = useContext(MasterContext);
 
     useEffect(() => {
         const fetchMovieData = async () => {
@@ -124,7 +120,6 @@ const DetailedTvShowPage = () => {
                         movie={movie}
                         genreName={genreNames}
                         featuredCrew={featuredCrew ?? []}
-                        handleOpenModal={handleOpenModal}
                     />
                     <Trailers youtubeData={youtubeData} />
                     <Casting cast={credits?.cast || []} />

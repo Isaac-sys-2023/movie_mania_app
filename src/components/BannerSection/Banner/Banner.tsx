@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import BannerSingle from "../BannerSingle/BannerSingle";
 import { useContext, useEffect, useState } from "react";
 import { MasterContext } from "@/context/MasterContext";

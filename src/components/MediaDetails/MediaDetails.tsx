@@ -2,15 +2,16 @@ import Image from "next/image";
 import noImage from "@/assets/no_image.jpg";
 import noBanner from "@/assets/no_banner.png";
 import { Rating, Typography } from "@mui/material";
+import { CrewMember } from "@/type/Credits";
+import { Movie } from "@/type/SingleMovie";
 
 interface tvShowHeaderProps {
-    movie: any;
+    movie: Movie;
     genreName: string;
-    featuredCrew: any[];
-    handleOpenModal: (image: string) => void;
+    featuredCrew: CrewMember[];
 }
 
-const MediaDetails = ({ movie, genreName, featuredCrew, handleOpenModal }: tvShowHeaderProps) => {
+const MediaDetails = ({ movie, genreName, featuredCrew }: tvShowHeaderProps) => {
     const imageUrl =
         movie && movie.poster_path
             ? `https://image.tmdb.org/t/p/w1280${movie.poster_path}`
@@ -30,7 +31,7 @@ const MediaDetails = ({ movie, genreName, featuredCrew, handleOpenModal }: tvSho
                 height={800}
                 className="object-top lg:max-h-[75vh] h-[75vh] w-full object-cover"
                 src={backdrop_path}
-                alt={movie.title || movie.name || "Imagen de serie no disponible"}
+                alt={movie.title  || "Imagen de no disponible"}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
             <div className="absolute bottom-10 left-10 sm:flex lg:gap-16 sm:gap-8 gap-4 ">
@@ -40,7 +41,7 @@ const MediaDetails = ({ movie, genreName, featuredCrew, handleOpenModal }: tvSho
                         width={450}
                         height={400}
                         src={imageUrl}
-                        alt={movie.title || movie.name || "Imagen de serie no disponible"}
+                        alt={movie.title || "Imagen de no disponible"}
                     />
                 </div>
                 <div className="self-end">

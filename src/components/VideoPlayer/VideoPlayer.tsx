@@ -1,5 +1,7 @@
+import { VideoData } from "@/type/YoutubeType";
+
 interface VideoPlayerProps {
-    video: any;
+    video: VideoData;
 }
 
 const VideoPlayer = ({ video }: VideoPlayerProps) => {

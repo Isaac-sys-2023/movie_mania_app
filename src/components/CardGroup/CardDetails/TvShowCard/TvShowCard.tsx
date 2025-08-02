@@ -2,7 +2,7 @@
 import noImage from "@/assets/no_image.jpg";
 import Link from "next/link";
 import Image from "next/image";
-import { Rating, Typography } from "@mui/material";
+import { Rating } from "@mui/material";
 import { TvShow } from "@/type/TvShowsType";
 
 const TvShowCard = ({ media }: { media: TvShow }) => {

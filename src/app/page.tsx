@@ -1,9 +1,7 @@
 import Banner from "@/components/BannerSection/Banner/Banner";
 import CardContainer from "@/components/CardGroup/CardContainer/CardContainer";
-import Navbar from "@/components/Layout/Navbar/Navbar";
 import SliderContainer from "@/components/Slider/SliderContainer/SliderContainer";
 import MainContext from "@/context/MasterContext";
-import Image from "next/image";
 
 export default function Home() {
   return (

@@ -1,12 +1,13 @@
 "use client";
 import React, { useEffect, useRef, useState } from 'react';
 import SearchResultCard from '../SearchResultCard/SearchResultCard';
+import { Movie } from '@/type/MovieType';
 
 const BASE_URL = 'https://api.themoviedb.org/3';
 const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 
 const SearchBox = () => {
-    const [results, setResults] = useState<any[]>([]);
+    const [results, setResults] = useState<Movie[]>([]);
     const [response, setResponse] = useState<string>("");
     const inputRef = useRef<HTMLInputElement>(null);
 

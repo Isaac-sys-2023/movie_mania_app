@@ -1,11 +1,10 @@
 "use client";
 import { MasterContext } from '@/context/MasterContext';
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useRef } from 'react';
 import SliderSingle from '../SliderSingle/SliderSingle';
 
 const SliderContainer = () => {
     const { movies } = useContext(MasterContext);
-    const [currentIndex, setCurrentIndex] = useState(0);
 
     const carouselRef = useRef<HTMLDivElement>(null);
     const scroll = (direction: 'left' | 'right') => {

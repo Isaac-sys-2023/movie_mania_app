@@ -1,6 +1,4 @@
 "use client";
-import noBanner from "@/assets/no_banner.png";
-import noImage from "@/assets/no_image.jpg";
 import Casting from "@/components/Casting/Casting";
 import MediaDetails from "@/components/MediaDetails/MediaDetails";
 import SceneGallery from "@/components/SceneGallery/SceneGallery";
@@ -121,7 +119,6 @@ const DetailedMoviePage = () => {
                         movie={movie}
                         genreName={genreNames}
                         featuredCrew={featuredCrew ?? []}
-                        handleOpenModal={handleOpenModal}
                     />
                     <Trailers youtubeData={youtubeData}/>
                     <Casting cast={credits?.cast || []}/>

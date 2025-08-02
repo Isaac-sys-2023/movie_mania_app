@@ -3,6 +3,9 @@
 import { useEffect, useState } from "react";
 import MovieCard from "../CardGroup/CardDetails/MovieCard/MovieCard";
 import TvShowCard from "../CardGroup/CardDetails/TvShowCard/TvShowCard";
+import { Media } from "@/type/MediaType";
+import { Movie } from "@/type/MovieType";
+import { TvShow } from "@/type/TvShowsType";
 
 const BASE_URL = 'https://api.themoviedb.org/3';
 const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
@@ -13,7 +16,7 @@ interface SimilarMovieGroupProps {
 }
 
 const SimilarMovieGroup: React.FC<SimilarMovieGroupProps> = ({ movieId, mediaType }) => {
-    const [similarMovies, setSimilarMovies] = useState<any[]>([]);
+    const [similarMovies, setSimilarMovies] = useState<Media[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<Error | null>(null);
 
@@ -55,9 +58,9 @@ const SimilarMovieGroup: React.FC<SimilarMovieGroupProps> = ({ movieId, mediaTyp
                     .filter((movie) => movie.poster_path)
                     .map((movie, index) =>
                         mediaType == "movie" ? (
-                            <MovieCard key={index} media={movie} />
+                            <MovieCard key={index} media={movie as Movie} />
                         ) : (
-                            <TvShowCard key={index} media={movie} />
+                            <TvShowCard key={index} media={movie as TvShow} />
                         )
                     )}
             </div>

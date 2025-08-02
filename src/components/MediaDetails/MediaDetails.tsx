@@ -87,7 +87,7 @@ const MediaDetails = ({ movie, genreName, featuredCrew }: tvShowHeaderProps) => 
                             </div>
                             <div className="md:flex gap-6 justify-start">
                                 {featuredCrew && featuredCrew.length > 0 ? (
-                                    featuredCrew.slice(0, 4).map((member: any, index: number) => (
+                                    featuredCrew.slice(0, 4).map((member: CrewMember, index: number) => (
                                         <div key={index} className="">
                                             <div className="">
                                                 <p className="text-white text-center text-[14px]">

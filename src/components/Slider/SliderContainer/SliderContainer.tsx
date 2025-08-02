@@ -2,6 +2,7 @@
 import { MasterContext } from '@/context/MasterContext';
 import React, { useContext, useRef } from 'react';
 import SliderSingle from '../SliderSingle/SliderSingle';
+import { Movie } from '@/type/MovieType';
 
 const SliderContainer = () => {
     const { movies } = useContext(MasterContext);
@@ -29,7 +30,7 @@ const SliderContainer = () => {
             </button>
 
             <div ref={carouselRef} className="carousel carousel-end rounded-box overflow-x-auto scroll-smooth">
-                {movies.map((movie, index) => <SliderSingle key={index} movie={movie}/>)}
+                {movies.map((movie, index) => <SliderSingle key={index} movie={movie as Movie}/>)}
             </div>
 
             <button

@@ -1,6 +1,8 @@
 "use client";
 
 import { MasterDataContext } from '@/type/MasterDataType';
+import { Media } from '@/type/MediaType';
+import { Movie } from '@/type/SingleMovie';
 import React, { createContext, ReactNode, useEffect, useRef, useState } from 'react';
 
 const defaultContextValue: MasterDataContext = {
@@ -12,7 +14,10 @@ const defaultContextValue: MasterDataContext = {
     loading: true,
     error: null,
     detailsType: "movie",
-    singleMovie: {},
+
+    // singleMovie: {},
+    singleMovie: null,
+
     movieOrTV: "movie",
     movieId: "",
     setQuery: () => { },
@@ -34,17 +39,25 @@ interface MasterContextProps {
 }
 
 const MainContext: React.FC<MasterContextProps> = ({ children }) => {
-    const [movies, setMovies] = useState<any[]>([]);
+    // const [movies, setMovies] = useState<any[]>([]);
+    const [movies, setMovies] = useState<Media[]>([]);
+
     const [error, setError] = useState<Error | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [page, setPage] = useState<number>(1);
-    const [movieOrTV, setMovieOrTV] = useState("movie");
-    const [trendingOptions, setTrendingOptions] = useState("top_rated");
+    const [movieOrTV, setMovieOrTV] = useState<"movie" | "tv">("movie");
+    const [trendingOptions, setTrendingOptions] = useState<string>("top_rated");
 
-    const [singleMovie, setSingleMovie] = useState<{}>({});
-    const [searchResult, setSearchResult] = useState<any[]>([]);
-    const [sliderData, setSliderData] = useState<any[]>([]);
-    const [similarMovies, setSimilarMovies] = useState<any[]>([]);
+    // const [singleMovie, setSingleMovie] = useState<{}>({});
+    const [singleMovie, setSingleMovie] = useState<Movie | null>(null);
+
+    // const [searchResult, setSearchResult] = useState<any[]>([]);
+    // const [sliderData, setSliderData] = useState<any[]>([]);
+    // const [similarMovies, setSimilarMovies] = useState<any[]>([]);
+    const [searchResult, setSearchResult] = useState<Media[]>([]);
+    const [sliderData, setSliderData] = useState<Media[]>([]);
+    const [similarMovies, setSimilarMovies] = useState<Media[]>([]);
+    
     const [query, setQuery] = useState<string>("");
     const [detailsType, setDetailsType] = useState<"movie" | "tv">("movie");
     const [movieId, setMovieId] = useState<string>("");
